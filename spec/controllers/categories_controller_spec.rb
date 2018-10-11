@@ -1,17 +1,6 @@
 require 'spec_helper'
 
-describe CategoriesController do
-  describe "Load new categories page" do
-    it "should load a new categories page even if params is empty" do
-      expect(Category).to receive(:find).with(:all).and_return(nil)
-      expect(Category).to receive(:new)
-      
-      get :new
-      
-      expect(response).to render_template(:new)
-    end
-  end
-end
+
 
 describe CategoriesController, "/index" do
   before do

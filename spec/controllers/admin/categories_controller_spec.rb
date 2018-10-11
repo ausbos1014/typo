@@ -11,6 +11,19 @@ describe Admin::CategoriesController do
     request.session = { :user => henri.id }
   end
 
+  describe "Load new categories page" do
+    it "should load a new categories page even if params is empty" do
+      Category.should_receive(:find).with(:all).and_return([])
+      Category.should_receive(:new)
+      
+      get :new
+      
+      expect(response).to render_template(:new)
+    end
+  end
+
+
+
   it "test_index" do
     get :index
     assert_response :redirect, :action => 'index'

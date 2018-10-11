@@ -36,7 +36,7 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
   config.use_instantiated_fixtures  = false
   config.fixture_path = "#{::Rails.root}/test/fixtures"
-
+  
   config.before(:each) do
     Localization.lang = :default
   end

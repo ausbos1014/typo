@@ -11,7 +11,7 @@ describe Admin::CategoriesController do
     request.session = { :user => henri.id }
   end
 
-  describe "Load new categories page" do
+  describe "Categories page tests" do
     it "should successfully load a new categories page when params is empty" do
       category_page = Factory(:category)
       Category.should_receive(:find).with(:all).and_return([])
@@ -22,7 +22,7 @@ describe Admin::CategoriesController do
       
     end
     
-    it "should post categories" do
+    it "should edit categories" do
       post :edit, 'category' => { :name => "The Fountainhead" }
       assigns(:category).should_not be_nil
       

@@ -12,14 +12,28 @@ describe Admin::CategoriesController do
   end
 
   describe "Load new categories page" do
-    it "should load a new categories page even if params is empty" do
+    it "should successfully load a new categories page when params is empty" do
+      category_page = Factory(:category)
       Category.should_receive(:find).with(:all).and_return([])
-      Category.should_receive(:new)
+      Category.should_receive(:new).and_return(category_page)
+      post :edit, 'category' => { :name => "Atlas Shrugged" }
+
+      expect(response).to render_template(category_page)
       
-      get :new
-      
-      expect(response).to render_template(:new)
     end
+    
+    it "should post categories" do
+      post :edit, 'category' => { :name => "The Fountainhead" }
+      assigns(:category).should_not be_nil
+      
+    end 
+    
+#    it "should delete categories" do
+#      @category = Category.create!(:name => "We the Living")
+#      get :destroy, :id => @category.id
+#      expect(assigns(:category)).to be_nil
+#    end    
+    
   end
 
 

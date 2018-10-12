@@ -28,11 +28,11 @@ describe Admin::CategoriesController do
       
     end 
     
-#    it "should delete categories" do
-#      @category = Category.create!(:name => "We the Living")
-#      get :destroy, :id => @category.id
-#      expect(assigns(:category)).to be_nil
-#    end    
+    it "should delete categories" do
+      @category = Category.create!(:name => "We the Living")
+      get :destroy, :id => @category.id
+      expect(assigns(:category)).to be_nil
+    end    
     
   end
 
